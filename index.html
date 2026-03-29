@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>chat AI afifah</title>
+
+<style>
+*{box-sizing:border-box;}
+
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.wrapper{
+    display:flex;
+    gap:15px;
+}
+
+/* GALERI */
+.gallery{
+    width:200px;
+    height:600px;
+    background:white;
+    border-radius:20px;
+    padding:10px;
+    overflow-y:auto;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.galeri-header{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.judul{
+    font-weight:bold;
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+/* MUSIC SIMPLE */
+.music-player{
+    margin-bottom:10px;
+}
+
+.music-player audio{
+    width:100%;
+}
+
+.gallery img,
+.gallery video{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:10px;
+}
+
+/* CHAT */
+.container{
+    width: 380px;
+    height: 600px;
+    background: #fff;
+    border-radius: 25px;
+    display:flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.header{
+    background: linear-gradient(135deg,#e91e63,#ff4081);
+    color:white;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:url('img/foto.jpeg');
+    background-size:cover;
+}
+
+.name{font-weight:bold;}
+.status{font-size:12px;opacity:0.8;}
+
+#chatBox{
+    flex:1;
+    padding:15px;
+    overflow-y:auto;
+    background:#ffe4ec;
+    display:flex;
+    flex-direction:column;
+}
+
+.message{
+    padding:10px 15px;
+    border-radius:20px;
+    margin:5px 0;
+    max-width:75%;
+    animation: fadeIn 0.3s ease;
+}
+
+.user{
+    background:#ff4081;
+    color:white;
+    align-self:flex-end;
+    border-bottom-right-radius:5px;
+}
+
+.ai{
+    background:white;
+    color:#333;
+    align-self:flex-start;
+    border-bottom-left-radius:5px;
+}
+
+.input-area{
+    display:flex;
+    padding:10px;
+    background:#fff;
+    border-top:1px solid #eee;
+}
+
+input{
+    flex:1;
+    padding:10px;
+    border-radius:20px;
+    border:1px solid #ddd;
+    outline:none;
+}
+
+button{
+    margin-left:10px;
+    border:none;
+    background:#e91e63;
+    color:white;
+    padding:10px 15px;
+    border-radius:50%;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.typing{
+    font-size:13px;
+    opacity:0.6;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:0.3;}
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(5px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- GALERI -->
+    <div class="gallery">
+
+        <div class="galeri-header">
+            <div class="judul">Kenangan Kita</div>
+
+            <div class="music-player">
+                <audio controls>
+                    <source src="oud/oudio.mpeg" type="audio/mp3">
+                </audio>
+            </div>
+        </div>
+
+        <!-- VIDEO -->
+        <video controls><source src="vid/ha1.mp4" type="video/mp4"></video>
+        <video controls><source src="vid/ha2.mp4" type="video/mp4"></video>
+        <video controls><source src="vid/ha3.mp4" type="video/mp4"></video>
+        <video controls><source src="vid/ha4.mp4" type="video/mp4"></video>
+
+        <!-- FOTO -->
+        <img src="img/h1.jpeg">
+        <img src="img/h2.jpeg">
+        <img src="img/h3.jpeg">
+        <img src="img/h4.jpeg">
+        <img src="img/h5.jpeg">
+        <img src="img/h6.jpeg">
+        <img src="img/h7.jpeg">
+        <img src="img/h8.jpeg">
+        <img src="img/h9.jpeg">
+        <img src="img/h10.jpeg">
+        <img src="img/h11.jpeg">
+        <img src="img/h12.jpeg">
+        <img src="img/h13.jpeg">
+
+    </div>
+
+    <!-- CHAT -->
+    <div class="container">
+
+        <div class="header">
+            <div class="avatar"></div>
+            <div>
+                <div class="name">Cintanya HenHen</div>
+                <div class="status">Online</div>
+            </div>
+        </div>
+
+        <div id="chatBox">
+            <div class="message ai">
+                Halooo cintanyaaaa apippp...
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="pesan" placeholder="Ketik pesan...">
+            <button onclick="kirimPesan()">➤</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function kirimPesan(){
+    let input = document.getElementById("pesan");
+    let pesan = input.value.trim();
+    if(pesan === "") return;
+
+    let chatBox = document.getElementById("chatBox");
+
+    let userMsg = document.createElement("div");
+    userMsg.classList.add("message","user");
+    userMsg.innerText = pesan;
+    chatBox.appendChild(userMsg);
+
+    input.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    let aiMsg = document.createElement("div");
+    aiMsg.classList.add("message","ai");
+    aiMsg.innerHTML = "<span class='typing'>Afifah lagi ngetik...</span>";
+    chatBox.appendChild(aiMsg);
+
+    setTimeout(()=>{
+        aiMsg.innerText = generateAIResponse(pesan);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 1000);
+}
+
+function generateAIResponse(pesan){
+    pesan = pesan.toLowerCase();
+
+    if(pesan.includes("sayang"))
+        return "AKUUU LEBIHH SAYANGGGG KAMUUUUU BEBEBEYY, BEBBEY SAYANG AKU TRUS YA";
+
+    if(pesan.includes("kangen"))
+        return "AKUUU KANGENNNN BANGETTTTTT SAMA KAMUUUUUUU, KALO KANGEN CHAT DI SINI YA";
+
+    if(pesan.includes("lagi apa"))
+        return "AKU SEDANG MIKIRIN KAMUUU, KAMUU LAGI APA SAYANGGG?";
+
+    if(pesan.includes("maaf"))
+        return "BEBBEYYYY JADIII COWOOO BAIK YA SAYANGGG, AKUUU MAU MAAFKAN KAMUUU";
+
+    if(pesan.includes("bobo"))
+        return "BOBOO YAA SAYANGGG JANGAN BERGADANG NNTI CAKITTTTTT";
+
+    if(pesan.includes("cinta"))
+        return "AKUUU CINTAAAAA BANGETTTT SAMA KAMUUUUUU MWAHHHHHHHHHHHHHHHHHHHHHHH                                                     ";
+
+    let responses = [
+        "HALOOOO SAYANGKUUU HENHENNNNNN",
+        "BEBEBEY LAGIII APAAAAAA",
+        "ILOVEEEEEEEYOUUUUUUUUUUUU SOO MUCHHHHH ILLOVEYOUUUUU MOREEE ILOVEYOUUUUUU FOREVERRR ILOVEYOUUUUUU MOREE THAN THATTTT SAAYANGGGGGGGG",
+        "AKUU SAYANGGG BANGETTT SAMAAA KAMUUUUU",
+        "KALO KANGEN CHAT DI SINI YA",
+        "AKUU SELALUU DOAIN KAMUU",
+        "JADI COWO BAIK YA SAYANGGG",
+        "AKUUU SELALU MAAFIN KAMUUU",
+        "BOBOO YAA SAYANGGG JANGAN BERGADANG NNTI CAKITTTTTT",
+        "AKUUU CINTAAAAA BANGETTTT SAMA KAMMUUUUUUUUU",
+        "BEBBEBEY JANGAN JAHATINNNNNNN AKUU TRUSSS YAAA",
+        "HRUS JADI COWOOO YANG BAIKKK OTAYYYYY MWAHHH",
+        "BEBBEBEBBEY JUGA HRUS SEMANAGATTTT TRUS OTAYYYY SAYANGKU MWAHHH",
+        "KAMUUUU CINTAAAA NYA AKUU SELAMAAAANYAAAAAA MWAHHHHH"
+    ];
+
+    return responses[Math.floor(Math.random()*responses.length)];
+}
+
+document.getElementById("pesan").addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        kirimPesan();
+    }
+});
+</script>
+
+</body>
+</html>
