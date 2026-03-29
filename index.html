@@ -14,57 +14,22 @@ body{
     background: linear-gradient(135deg,#ff758c,#ff7eb3);
     display:flex;
     justify-content:center;
-    align-items:center;
-    height:100vh;
+    align-items: flex-start; /* Agar bisa scroll dari atas */
+    min-height:100vh;
+    padding: 20px 0;
 }
 
 .wrapper{
     display:flex;
-    gap:15px;
+    flex-direction: column; /* Mengatur susunan ke bawah */
+    align-items: center;
+    gap:20px;
 }
 
-/* GALERI */
-.gallery{
-    width:200px;
-    height:600px;
-    background:white;
-    border-radius:20px;
-    padding:10px;
-    overflow-y:auto;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
-
-.galeri-header{
-    text-align:center;
-    margin-bottom:10px;
-}
-
-.judul{
-    font-weight:bold;
-    font-size:16px;
-    margin-bottom:5px;
-}
-
-/* MUSIC SIMPLE */
-.music-player{
-    margin-bottom:10px;
-}
-
-.music-player audio{
-    width:100%;
-}
-
-.gallery img,
-.gallery video{
-    width:100%;
-    border-radius:15px;
-    margin-bottom:10px;
-}
-
-/* CHAT */
+/* CHAT CONTAINER */
 .container{
     width: 380px;
-    height: 600px;
+    height: 500px; /* Sedikit disesuaikan tingginya agar proporsional */
     background: #fff;
     border-radius: 25px;
     display:flex;
@@ -150,6 +115,44 @@ button{
     font-weight:bold;
 }
 
+/* GALERI DI BAWAH */
+.gallery{
+    width:380px; /* Lebar disamakan dengan chat container */
+    max-height:500px;
+    background:white;
+    border-radius:25px;
+    padding:20px;
+    overflow-y:auto;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.galeri-header{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.judul{
+    font-weight:bold;
+    font-size:18px;
+    margin-bottom:10px;
+    color: #e91e63;
+}
+
+.music-player{
+    margin-bottom:15px;
+}
+
+.music-player audio{
+    width:100%;
+}
+
+.gallery img,
+.gallery video{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
 .typing{
     font-size:13px;
     opacity:0.6;
@@ -172,45 +175,7 @@ button{
 
 <div class="wrapper">
 
-    <!-- GALERI -->
-    <div class="gallery">
-
-        <div class="galeri-header">
-            <div class="judul">Kenangan Kita</div>
-
-            <div class="music-player">
-                <audio controls>
-                    <source src="oud/oudio.mpeg" type="audio/mp3">
-                </audio>
-            </div>
-        </div>
-
-        <!-- VIDEO -->
-        <video controls><source src="vid/ha1.mp4" type="video/mp4"></video>
-        <video controls><source src="vid/ha2.mp4" type="video/mp4"></video>
-        <video controls><source src="vid/ha3.mp4" type="video/mp4"></video>
-        <video controls><source src="vid/ha4.mp4" type="video/mp4"></video>
-
-        <!-- FOTO -->
-        <img src="img/h1.jpeg">
-        <img src="img/h2.jpeg">
-        <img src="img/h3.jpeg">
-        <img src="img/h4.jpeg">
-        <img src="img/h5.jpeg">
-        <img src="img/h6.jpeg">
-        <img src="img/h7.jpeg">
-        <img src="img/h8.jpeg">
-        <img src="img/h9.jpeg">
-        <img src="img/h10.jpeg">
-        <img src="img/h11.jpeg">
-        <img src="img/h12.jpeg">
-        <img src="img/h13.jpeg">
-
-    </div>
-
-    <!-- CHAT -->
     <div class="container">
-
         <div class="header">
             <div class="avatar"></div>
             <div>
@@ -229,7 +194,36 @@ button{
             <input type="text" id="pesan" placeholder="Ketik pesan...">
             <button onclick="kirimPesan()">➤</button>
         </div>
+    </div>
 
+    <div class="gallery">
+        <div class="galeri-header">
+            <div class="judul">Kenangan Kita</div>
+            <div class="music-player">
+                <audio controls>
+                    <source src="oud/oudio.mpeg" type="audio/mp3">
+                </audio>
+            </div>
+        </div>
+
+        <video controls><source src="vid/ha1.mp4" type="video/mp4"></video>
+        <video controls><source src="vid/ha2.mp4" type="video/mp4"></video>
+        <video controls><source src="vid/ha3.mp4" type="video/mp4"></video>
+        <video controls><source src="vid/ha4.mp4" type="video/mp4"></video>
+
+        <img src="img/h1.jpeg">
+        <img src="img/h2.jpeg">
+        <img src="img/h3.jpeg">
+        <img src="img/h4.jpeg">
+        <img src="img/h5.jpeg">
+        <img src="img/h6.jpeg">
+        <img src="img/h7.jpeg">
+        <img src="img/h8.jpeg">
+        <img src="img/h9.jpeg">
+        <img src="img/h10.jpeg">
+        <img src="img/h11.jpeg">
+        <img src="img/h12.jpeg">
+        <img src="img/h13.jpeg">
     </div>
 
 </div>
@@ -280,7 +274,7 @@ function generateAIResponse(pesan){
         return "BOBOO YAA SAYANGGG JANGAN BERGADANG NNTI CAKITTTTTT";
 
     if(pesan.includes("cinta"))
-        return "AKUUU CINTAAAAA BANGETTTT SAMA KAMUUUUUU MWAHHHHHHHHHHHHHHHHHHHHHHH                                                     ";
+        return "AKUUU CINTAAAAA BANGETTTT SAMA KAMUUUUUU MWAHHHHHHHHHHHHHHHHHHHHHHH";
 
     let responses = [
         "HALOOOO SAYANGKUUU HENHENNNNNN",
