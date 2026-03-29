@@ -14,22 +14,24 @@ body{
     background: linear-gradient(135deg,#ff758c,#ff7eb3);
     display:flex;
     justify-content:center;
-    align-items: flex-start; /* Agar bisa scroll dari atas */
+    align-items: flex-start; /* Agar mulai dari atas dan bisa scroll */
     min-height:100vh;
-    padding: 20px 0;
+    padding: 20px;
 }
 
 .wrapper{
     display:flex;
-    flex-direction: column; /* Mengatur susunan ke bawah */
+    flex-direction: column; /* MEMASTIKAN VERTIKAL/KE BAWAH */
     align-items: center;
     gap:20px;
+    width: 100%;
 }
 
 /* CHAT CONTAINER */
 .container{
-    width: 380px;
-    height: 500px; /* Sedikit disesuaikan tingginya agar proporsional */
+    width: 100%;
+    max-width: 380px; /* Batas maksimal lebar chat */
+    height: 550px;
     background: #fff;
     border-radius: 25px;
     display:flex;
@@ -117,13 +119,12 @@ button{
 
 /* GALERI DI BAWAH */
 .gallery{
-    width:380px; /* Lebar disamakan dengan chat container */
-    max-height:500px;
-    background:white;
-    border-radius:25px;
-    padding:20px;
-    overflow-y:auto;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 380px; /* Disamakan lebarnya dengan chat */
+    background: white;
+    border-radius: 25px;
+    padding: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .galeri-header{
@@ -151,6 +152,7 @@ button{
     width:100%;
     border-radius:15px;
     margin-bottom:15px;
+    display: block;
 }
 
 .typing{
